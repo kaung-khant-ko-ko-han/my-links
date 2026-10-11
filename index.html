@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kaung Khant Ko Ko Han — Links</title>
+<meta name="description" content="Control System Engineer | System Integrator | Consulting. All links in one place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Myanmar:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     DESIGN TOKENS — change colours here
+     ============================================================ */
+  :root {
+    --paper:    #FDFCF9;   /* drafting paper, near white */
+    --paper-2:  #F6F3EC;
+    --ink:      #23211E;
+    --ink-soft: #6B665D;
+    --dash:     #B9B2A3;   /* dashed borders             */
+    --grid:     #D9D3C5;   /* dot grid                   */
+    --clay:     #BF5B3D;   /* primary accent             */
+    --olive:    #6F8352;
+    --sky:      #5B8DB8;
+    --fig:      #B5587C;
+
+    --serif: "Source Serif 4", "Noto Sans Myanmar", Georgia, serif;
+    --mono:  "JetBrains Mono", "Noto Sans Myanmar", ui-monospace, "SF Mono", Menlo, monospace;
+    --my:    "Noto Sans Myanmar", "Padauk", sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    background-color: var(--paper);
+    /* engineering dot-grid paper */
+    background-image: radial-gradient(var(--grid) 1px, transparent 1.2px);
+    background-size: 22px 22px;
+    padding: max(2rem, env(safe-area-inset-top)) 1.25rem max(3rem, env(safe-area-inset-bottom));
+  }
+
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; border-radius: 4px; }
+  main { max-width: 660px; margin: 0 auto; }
+
+  /* ============================================================
+     ASCII banner + Burmese greeting
+     ============================================================ */
+  .banner {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: clamp(.58rem, 2.6vw, .95rem);
+    line-height: 1.15;
+    color: var(--clay);
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .greeting {
+    margin: .5rem 0 0;
+    font-family: var(--my);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+    line-height: 1.9;
+    color: var(--ink);
+  }
+
+  /* ============================================================
+     Oh-my-posh prompt
+     ============================================================ */
+  .prompt {
+    display: flex; flex-wrap: wrap; align-items: center;
+    font-family: var(--mono); font-size: .8rem;
+    margin: 1.2rem 0 .4rem;
+  }
+  .seg {
+    --c: var(--ink);
+    background: var(--c); color: #fff;
+    padding: .28rem 1.15rem .28rem .85rem;
+    margin-right: -.55rem;
+    clip-path: polygon(0 0, calc(100% - .7rem) 0, 100% 50%, calc(100% - .7rem) 100%, 0 100%);
+    white-space: nowrap;
+  }
+  .seg:first-child { border-radius: 6px 0 0 6px; }
+  .seg.path { --c: var(--olive); }
+  .seg.git  { --c: var(--sky); }
+  .seg.mech { --c: var(--fig); }
+  .prompt .tail { width: .55rem; }
+
+  .cmd { font-family: var(--mono); font-size: .92rem; margin: 0 0 1.4rem; display: flex; gap: .6rem; }
+  .cmd .arrow { color: var(--clay); font-weight: 600; }
+  .typed {
+    display: inline-block; overflow: hidden; white-space: nowrap; width: 0;
+    border-right: 2px solid var(--clay);
+    animation: type 1.2s steps(6) .3s forwards, blink .9s step-end infinite;
+  }
+  @keyframes type  { to { width: 6ch; } }
+  @keyframes blink { 50% { border-color: transparent; } }
+
+  /* ============================================================
+     Profile (logo + name + bio)
+     ============================================================ */
+  .profile { display: flex; gap: 1.2rem; align-items: center; margin-bottom: 1.8rem; }
+  .logo {
+    flex: none; width: 92px; height: 92px;
+    border: 1.5px dashed var(--dash); border-radius: 50%;
+    padding: 5px; background: var(--paper);
+    display: grid; place-items: center;
+    overflow: hidden;
+  }
+  .logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; display: block; }
+  .logo .fallback { font-family: var(--mono); font-weight: 600; font-size: .95rem; color: var(--clay); text-align: center; line-height: 1.2; }
+  .who h1 { margin: 0; font-size: clamp(1.25rem, 5vw, 1.7rem); line-height: 1.25; font-weight: 600; letter-spacing: .01em; }
+  .who .bio { margin: .35rem 0 0; font-family: var(--mono); font-size: .8rem; line-height: 1.6; color: var(--ink-soft); }
+  .who .bio span { color: var(--clay); padding: 0 .25rem; }
+
+  /* ============================================================
+     Mechatronics block diagram (sheet with title block)
+     ============================================================ */
+  .sheet {
+    margin: 0 0 2.2rem;
+    border: 1.5px dashed var(--dash);
+    border-radius: 10px;
+    background: rgba(253, 252, 249, .92);
+  }
+  .sheet pre {
+    margin: 0; padding: 1.1rem 1rem .7rem;
+    font-family: var(--mono);
+    font-size: clamp(.5rem, 2.15vw, .8rem);
+    line-height: 1.35;
+    color: var(--ink);
+    overflow-x: auto;
+  }
+  .sheet .t { color: var(--clay); }
+  .titleblock {
+    display: flex; flex-wrap: wrap; gap: .2rem 1.4rem;
+    padding: .55rem 1rem;
+    border-top: 1.5px dashed var(--dash);
+    font-family: var(--mono); font-size: .72rem; color: var(--ink-soft);
+  }
+  .titleblock b { color: var(--ink); font-weight: 600; }
+
+  /* ============================================================
+     Links — dashed borders
+     ============================================================ */
+  .links { list-style: none; margin: 0 0 2.4rem; padding: 0; }
+  .links li + li { margin-top: .6rem; }
+
+  .link {
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: center; gap: .9rem;
+    padding: .8rem 1rem;
+    background: var(--paper);
+    border: 1.5px dashed var(--dash);
+    border-radius: 10px;
+    font-family: var(--mono); font-size: .88rem;
+    transition: border-color .15s, background-color .15s;
+  }
+  .link .ico {
+    width: 2rem; height: 2rem; display: grid; place-items: center;
+    border: 1.5px dashed var(--dash); border-radius: 7px;
+    font-size: 1rem; color: var(--clay);
+  }
+  .link .name { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; line-height: 1.25; }
+  .link .path { display: block; color: var(--ink-soft); font-size: .76rem; margin-top: .1rem; overflow-wrap: anywhere; }
+  .link .go   { color: var(--clay); opacity: 0; transform: translateX(-4px); transition: opacity .15s, transform .15s; }
+  .link:hover, .link:focus-visible { border-color: var(--clay); background: #fff; }
+  .link:hover .go, .link:focus-visible .go { opacity: 1; transform: none; }
+
+  /* ============================================================
+     Blessing + footer
+     ============================================================ */
+  .blessing {
+    margin: 0 0 2rem; padding: 1.1rem 1rem;
+    border: 1.5px dashed var(--dash); border-radius: 10px;
+    text-align: center;
+  }
+  .blessing .orn { font-family: var(--mono); font-size: .8rem; color: var(--clay); letter-spacing: .15em; }
+  .blessing p {
+    margin: .4rem 0; font-family: var(--my); font-weight: 600;
+    font-size: clamp(1.05rem, 4.2vw, 1.3rem); line-height: 2;
+  }
+
+  .foot { font-family: var(--mono); font-size: .8rem; color: var(--ink-soft); }
+  .foot .row { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; align-items: center; }
+  .cursor { display: inline-block; width: .6em; height: 1.05em; background: var(--clay); vertical-align: text-bottom; animation: blink .9s step-end infinite; }
+
+  @media (max-width: 480px) {
+    .link { grid-template-columns: auto 1fr; }
+    .link .go { display: none; }
+    .logo { width: 76px; height: 76px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .typed { width: 6ch; animation: none; border-right: 0; }
+    .cursor { animation: none; }
+    .link, .link .go { transition: none; }
+  }
+</style>
+</head>
+
+<body>
+<main>
+
+  <!-- ASCII banner -->
+<pre class="banner" aria-label="Hello">
+ _   _ _____ _     _     ___
+| | | | ____| |   | |   / _ \
+| |_| |  _| | |   | |  | | | |
+|  _  | |___| |___| |___| |_| |
+|_| |_|_____|_____|_____|\___/
+</pre>
+  <p class="greeting">မင်္ဂလာပါ</p>
+
+  <!-- Oh-my-posh style prompt -->
+  <div class="prompt" aria-hidden="true">
+    <span class="seg">kaung@cse-mm</span>
+    <span class="seg path">~/links</span>
+    <span class="seg git">⎇ main</span>
+    <span class="seg mech">⚙ mechatronics</span>
+    <span class="tail"></span>
+  </div>
+  <p class="cmd" aria-hidden="true"><span class="arrow">❯</span><span class="typed">whoami</span></p>
+
+  <!-- Profile -->
+  <section class="profile" aria-label="Profile">
+    <div class="logo">
+      <!-- Put your logo at assets/cse-mm-logo.png (square PNG recommended) -->
+      <img src="assets/cse-mm-logo.png" alt="CSE-MM logo"
+           onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'fallback',innerHTML:'CSE<br>MM'}))">
+    </div>
+    <div class="who">
+      <h1>KAUNG KHANT KO KO HAN</h1>
+      <p class="bio">Control System Engineer<span>|</span>System Integrator<span>|</span>Consulting</p>
+    </div>
+  </section>
+
+  <!-- Mechatronics: closed-loop control diagram -->
+  <figure class="sheet" style="margin-left:0;margin-right:0" aria-label="Closed-loop control block diagram">
+<pre aria-hidden="true">               +------------+   +----------+   +-------+
+ ------&gt;(+)---&gt;| CONTROLLER |--&gt;| ACTUATOR |--&gt;| PLANT |--+--&gt; y(t)
+ r(t)    ^ -   +------------+   +----------+   +-------+  |
+         |                                                |
+         |              +--------+                        |
+         +--------------| SENSOR |&lt;-----------------------+
+                        +--------+
+
+ mechanical + electronics + control + software = <span class="t">mechatronics</span></pre>
+    <div class="titleblock" aria-hidden="true">
+      <span><b>DWG</b> CSE-MM</span>
+      <span><b>SYS</b> closed-loop</span>
+      <span><b>REV</b> A</span>
+    </div>
+  </figure>
+
+  <!-- Links -->
+  <nav aria-label="Links">
+    <ul class="links">
+      <li>
+        <a class="link" href="https://kaung-khant-ko-ko-han.github.io/Portfolio/" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true">◈</span>
+          <span><span class="name">Personal Website</span><span class="path">~/portfolio</span></span>
+          <span class="go" aria-hidden="true">❯</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://www.linkedin.com/in/kaung-khant-ko-ko-han-o4059" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true">◎</span>
+          <span><span class="name">LinkedIn</span><span class="path">~/social/linkedin</span></span>
+          <span class="go" aria-hidden="true">❯</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://github.com/kaung-khant-ko-ko-han" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true">⌥</span>
+          <span><span class="name">GitHub</span><span class="path">~/code/kaung-khant-ko-ko-han</span></span>
+          <span class="go" aria-hidden="true">❯</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://github.com/dr-kaung-khant-ko-ko-han" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true">⌥</span>
+          <span><span class="name">GitHub (second account)</span><span class="path">~/code/dr-kaung-khant-ko-ko-han</span></span>
+          <span class="go" aria-hidden="true">❯</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://www.youtube.com/@kaungkhantkokohan858" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true">▶</span>
+          <span><span class="name">YouTube</span><span class="path">~/video/kaungkhantkokohan858</span></span>
+          <span class="go" aria-hidden="true">❯</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://www.patreon.com/cw/CSEMM" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true">◆</span>
+          <span><span class="name">Patreon</span><span class="path">~/support/patreon/CSEMM</span></span>
+          <span class="go" aria-hidden="true">❯</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://www.skool.com/@43793179" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true">◉</span>
+          <span><span class="name">Skool community</span><span class="path">~/community/skool</span></span>
+          <span class="go" aria-hidden="true">❯</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://buymeacoffee.com/kent_firefly" target="_blank" rel="noopener">
+          <span class="ico" aria-hidden="true">☕</span>
+          <span><span class="name">Buy Me a Coffee</span><span class="path">~/support/kent_firefly</span></span>
+          <span class="go" aria-hidden="true">❯</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Blessing -->
+  <section class="blessing" aria-label="Blessing">
+    <div class="orn" aria-hidden="true">~ ~ ~ ~ ~ ~ ~ ~ ~</div>
+    <p>ကိုယ်စိတ်နှစ်ဖြာ ကျန်းမာ ချမ်းသာကြပါစေ</p>
+    <div class="orn" aria-hidden="true">~ ~ ~ ~ ~ ~ ~ ~ ~</div>
+  </section>
+
+  <footer class="foot">
+    <div class="row">
+      <span>exit 0</span>
+      <span aria-hidden="true">❯ <span class="cursor"></span></span>
+    </div>
+  </footer>
+
+</main>
+</body>
+</html>
